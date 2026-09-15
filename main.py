@@ -30,7 +30,7 @@ def config_setup():
 
 def comm(folder_name):
     with open(f"{folder_name}/com.txt", "w") as a:
-        text = "goy"*random.randint(1, 100)
+        text = "meowl"*random.randint(1, 100)
         a.write(text)
 
     os.system(f'cd {folder_name}; git add com.txt; git commit -m "some commit"; git push origin main')
