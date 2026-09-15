@@ -1,16 +1,18 @@
 <h1>use guide</h1>
 
-<b>1. clone</b>
+<b>1. create a public repo</b>
+
+<b>2. clone this repo</b>
 ```
 git clone https://github.com/raxxer160/commit-farmer-script.git
 
 ```
-<b>2. run the script</b>
+<b>3. run the script</b>
 ```
 cd commit-farmer-script
 python3 main.py
 ```
-<b>3. complete the configuration</b>
+<b>4. complete the configuration</b>
 <br>example
 ```
 no configuration found
