@@ -1,13 +1,12 @@
 import random
 import os
+import time
 
-config = ""
-try:
-    with open("config.txt") as f:
-        config = f.readlines()
-except:
+
+def config_setup():
+    global config
     print("no configuration found")
-    repo = input("ssh repo (git@github.com:user/repo.git): ")
+    repo = input("repo url/ssh (must end with .git): ")
     min_time = input("minimal time between commits (minutes, def 30): ")
     max_time = input("maximum time between commits (minutes, def 90): ")
 
@@ -26,8 +25,27 @@ except:
 
     print("created config.txt")
 
+    with open("config.txt") as f:
+        config = f.readlines()
+
+def comm():
+    minn = int(config[1].replace("\n", ""))
+    maxx = int(config[2].replace("\n", ""))
+    time.sleep(random.randint(minn*60, maxx*60))
+
+config=""
+try:
+    with open("config.txt") as f:
+        config = f.readlines()
+except:
+   config_setup()
+
 folder_name = config[0][config[0].index("/")+1:config[0].index(".g")]
+
 if not os.path.isdir(folder_name):
-    os.system(f"mkdir {folder_name}")
-    os.system(f"cd {folder_name}")
-    os.system("touch txt.txt")
+
+    os.system(f"git clone {config[0].replace("\n", "")}")
+
+    if len(os.listdir(folder_name)) < 2:
+        with open(f"{folder_name}/com.txt", "w") as co:
+            co.write("")
